@@ -1,0 +1,11 @@
+{
+  "name": "spectral-playground",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:emilioSp/spectral-playground.git",
+  "author": "emilioSp <emilio.spatola@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@stoplight/spectral": "^5.7.2"
+  }
+}
