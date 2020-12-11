@@ -11,7 +11,7 @@ const getYaml = async () => {
   const yaml = await getYaml();
   monaco.editor.create(document.getElementById('root'), {
     value: [yaml].join('\n'),
-    language: 'yaml'
+    language: 'javascript'
   });
   const myOpenApiDocument = new Document(yaml.toString(), Parsers.Yaml);
   const spectral = new Spectral();

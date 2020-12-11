@@ -42,7 +42,9 @@ module.exports = {
         { from: 'public', to: '.' },
       ],
     }),
-    new MonacoWebpackPlugin()
+    new MonacoWebpackPlugin({
+      languages: ['yaml']
+    })
   ],
   resolve: {
     extensions: ['.js', '.json'],
