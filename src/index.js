@@ -1,16 +1,27 @@
-import * as monaco from 'monaco-editor';
-import { validate } from './spectral-browser.js';
-import axios from 'axios';
+import React, { useState } from 'react';
+import ReactDOM from 'react-dom';
+import { Editor } from './Editor.js';
 
-export const getYaml = async () => {
-  const response = await axios.get('performance.yaml');
-  return response.data;
+const App = () => {
+  const [spectralResult, setSpectralResult] = useState(null);
+
+  const handleOnValidate = results => {
+    setSpectralResult(results);
+  }
+
+  return <>
+  <Editor onValidate={handleOnValidate}/>
+  <div style={{ height: '50vh', overflow: 'auto' }}>
+    {spectralResult && <pre> Found {spectralResult.length} problems:
+      { JSON.stringify(spectralResult, null, 2) }
+    </pre>}
+  </div>
+    </>
 }
 
-(async () => {
-  const yaml = await getYaml();
-  window.monacoEditor = monaco.editor.create(document.getElementById('root'), {
-    value: [yaml].join('\n'),
-    language: 'yaml'
-  });
-})();
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById("react")
+);

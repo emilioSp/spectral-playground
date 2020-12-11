@@ -1,13 +1,10 @@
-const { Spectral, Document, Parsers, isOpenApiv3 } = require("@stoplight/spectral");
-const fs = require('fs');
-const path = require('path');
+import { isOpenApiv3, Spectral } from '@stoplight/spectral';
 
-(async () => {
-  const yaml = fs.readFileSync(path.resolve(__dirname, '../public/performance.yaml'));
-  const myOpenApiDocument = new Document(yaml.toString(), Parsers.Yaml);
+const init = async () => {
   const spectral = new Spectral();
-  spectral.registerFormat("oas3", isOpenApiv3);
-  await spectral.loadRuleset(path.resolve(__dirname, '../public/ruleset-extra-security.yaml'));
-  const results = await spectral.run(myOpenApiDocument);
-  console.log('here are the results', results);
-})();
+  spectral.registerFormat('oas3', isOpenApiv3);
+  await spectral.loadRuleset(`${location.href}ruleset-extra-security.yaml`);
+  return spectral;
+}
+
+export const getSpectral = init;
