@@ -5,7 +5,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 
 const srcPath = path.resolve(__dirname, 'src');
-const buildPath = path.resolve(__dirname, 'build');
+const buildPath = path.resolve(__dirname, 'docs');
 
 module.exports = {
   entry: `${srcPath}/index.js`,
