@@ -43,7 +43,7 @@ module.exports = {
       ],
     }),
     new MonacoWebpackPlugin({
-      languages: ['yaml']
+      languages: ['javascript']
     })
   ],
   resolve: {
