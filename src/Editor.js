@@ -3,6 +3,7 @@ import axios from 'axios';
 import * as monaco from 'monaco-editor';
 import { Document, Parsers } from '@stoplight/spectral';
 import { getSpectral } from './spectral.js';
+import './Editor.css';
 
 export const Editor = props => {
   const [isValidating, setIsValidating] = useState(false);
@@ -17,7 +18,20 @@ export const Editor = props => {
       const myOpenApiDocument = new Document(yaml, Parsers.Yaml);
       const spectral = await getSpectral();
       const results = await spectral.run(myOpenApiDocument);
-      console.log('here are the results', results);
+      const sev1 = results.filter(r => r.severity === 1);
+      console.log(sev1);
+      for (const sev of sev1) {
+        editor.current.deltaDecorations([], [
+          {
+            range: new monaco.Range(sev.range.start.line,1,sev.range.end.line,1),
+            options: {
+              isWholeLine: true,
+              className: 'myContentClass',
+              glyphMarginClassName: 'myGlyphMarginClass'
+            }
+          }
+        ]);
+      }
       setIsValidating(false);
       props.onValidate(results);
     }, []);
@@ -27,7 +41,8 @@ export const Editor = props => {
       const { data: yaml} = await axios.get('performance.yaml');
       editor.current = monaco.editor.create(editorEl.current, {
         value: [yaml].join('\n'),
-        language: 'yaml'
+        language: 'yaml',
+        glyphMargin: true
       });
     }
     initMonaco();
