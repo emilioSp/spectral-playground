@@ -1,6 +1,8 @@
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 
 const srcPath = path.resolve(__dirname, 'src');
 const buildPath = path.resolve(__dirname, 'build');
@@ -20,7 +22,7 @@ module.exports = {
     rules: [
       { test: /\.js$/, use: ['babel-loader'], exclude: /node_modules/ },
       { test: /\.css$/, use: ['style-loader', 'css-loader'] },
-      { test: /\.(woff(2)?|ico|png|jpg|jpeg|svg|ttf)$/i, type: 'asset', generator: { filename: 'resources/[name].[contenthash][ext]' }},
+      { test: /\.(woff(2)?|ico|png|jpg|jpeg|svg|ttf)$/i, type: 'asset', generator: { filename: '[name].[contenthash][ext]' }},
     ]
   },
   output: {
@@ -35,6 +37,12 @@ module.exports = {
       template: `${srcPath}/index.html`,
       filename: 'index.html',
     }),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: 'public', to: '.' },
+      ],
+    }),
+    new MonacoWebpackPlugin()
   ],
   resolve: {
     extensions: ['.js', '.json'],

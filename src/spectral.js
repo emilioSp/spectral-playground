@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 (async () => {
-  const yaml = fs.readFileSync(path.resolve(__dirname, 'petstore.yaml'));
+  const yaml = fs.readFileSync(path.resolve(__dirname, 'performance.yaml'));
   const myOpenApiDocument = new Document(yaml.toString(), Parsers.Yaml);
   const spectral = new Spectral();
   spectral.registerFormat("oas3", isOpenApiv3);
