@@ -3,11 +3,12 @@ const fs = require('fs');
 const path = require('path');
 
 (async () => {
-  const yaml = fs.readFileSync(path.resolve(__dirname, 'performance.yaml'));
+  const yaml = fs.readFileSync(path.resolve(__dirname, '../public/performance.yaml'));
+  const ruleset = fs.readFileSync(path.resolve(__dirname, '../public/ruleset.yaml'));
   const myOpenApiDocument = new Document(yaml.toString(), Parsers.Yaml);
   const spectral = new Spectral();
   spectral.registerFormat("oas3", isOpenApiv3);
-  await spectral.loadRuleset(path.resolve(__dirname, 'ruleset.yaml'));
+  await spectral.loadRuleset('https://teamdigitale.github.io/api-oas-checker/spectral.yml');
   const results = await spectral.run(myOpenApiDocument);
   console.log('here are the results', results);
 })();

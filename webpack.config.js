@@ -46,5 +46,9 @@ module.exports = {
   ],
   resolve: {
     extensions: ['.js', '.json'],
+    fallback: {
+      'vm': 'vm-browserify',
+      'fs': false
+    }
   }
 }
