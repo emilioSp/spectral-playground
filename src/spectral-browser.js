@@ -7,10 +7,11 @@ export const validate = async () => {
   const myOpenApiDocument = new Document(yaml, Parsers.Yaml);
   const spectral = new Spectral();
   spectral.registerFormat('oas3', isOpenApiv3);
-  await spectral.loadRuleset(`${location.href}ruleset.yaml`);
+  await spectral.loadRuleset(`${location.href}ruleset-extra-security.yaml`);
   const results = await spectral.run(myOpenApiDocument);
   console.log('here are the results', results);
-  el.innerHTML = `<pre>${JSON.stringify(results, null, 2)}</pre>`;
+  el.innerHTML = `<pre>Found ${results.length} problems:
+${JSON.stringify(results, null, 2)}</pre>`;
 }
 
 window.onload = () => {
