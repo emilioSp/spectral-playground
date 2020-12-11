@@ -26,7 +26,7 @@ module.exports = {
     ]
   },
   output: {
-    filename: '[name].[contenthash].js',
+    filename: '[contenthash].js', // TODO: [name] is too long for monaco files and github pages block js loading script
     path: buildPath,
     publicPath: '',
   },
