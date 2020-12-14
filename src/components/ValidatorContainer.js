@@ -45,7 +45,7 @@ export const ValidatorContainer = () => {
             <ValidatorController onValidate={validate} />
           </Col>
         </Row>
-        <Row style={{height: 'calc(100vh - 200px)', overflow: 'scroll'}}>
+        <Row style={{height: 'calc(100vh - 95px)', overflow: 'scroll'}}>
           <Col md="12" className="bg-white">
             <ValidatorResults results={spectralResult}/>
           </Col>

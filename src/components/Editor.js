@@ -21,6 +21,6 @@ export const Editor = React.forwardRef((props, editorRef) => {
   }, [])
 
   return <>
-    <div ref={editorEl} style={{ height: '90vh', overflow: 'auto', marginRight: '6px' }}></div>
+    <div ref={editorEl} style={{ height: 'calc(100vh - 27px)', overflow: 'auto', marginRight: '6px' }}></div>
   </>;
 });

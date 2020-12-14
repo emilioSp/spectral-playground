@@ -12,18 +12,16 @@ import { Container, Row, Col } from 'design-react-kit';
 
 const App = () => {
   return <>
-    <Container fluid="false">
-      <Row>
-        <Col md="1">
+    <nav className="navbar bg-primary text-white flex-md-nowrap p-0">
+      <Header />
+    </nav>
+    <Container fluid="true">
+      <Row className="bg-primary">
+        <nav className="col-md-2 d-none d-md-block bg-white">
           <Menu />
-        </Col>
-        <Col md="11" className="bg-primary text-white">
+        </nav>
+        <Col md="10" className="text-white">
           <Row>
-            <Col md="12" className="p-3">
-              <Header />
-            </Col>
-          </Row>
-          <Row className="p-3">
             <Col md="12">
               <ValidatorContainer />
             </Col>
