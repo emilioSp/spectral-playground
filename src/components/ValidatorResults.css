@@ -1,0 +1,11 @@
+.main {
+    height: 400px;
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.message-results {
+    overflow: scroll;
+}
