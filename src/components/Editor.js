@@ -13,13 +13,14 @@ export const Editor = React.forwardRef((props, editorRef) => {
       editorRef.current = monaco.editor.create(editorEl.current, {
         value: [yaml].join('\n'),
         language: 'yaml',
-        glyphMargin: true
+        glyphMargin: true,
+        theme: 'vs-dark'
       });
     }
     initMonaco();
   }, [])
 
   return <>
-    <div ref={editorEl} style={{ height: '90vh', overflow: 'auto' }}></div>
+    <div ref={editorEl} style={{ height: '90vh', overflow: 'auto', marginRight: '6px' }}></div>
   </>;
 });

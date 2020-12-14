@@ -5,6 +5,7 @@ import { getSpectral } from '../spectral.js';
 import * as monaco from 'monaco-editor';
 import { ValidatorController } from './ValidatorController.js';
 import { ValidatorResults } from './ValidatorResults.js';
+import { Row, Col } from 'design-react-kit';
 
 export const ValidatorContainer = () => {
   const [spectralResult, setSpectralResult] = useState(null);
@@ -34,16 +35,22 @@ export const ValidatorContainer = () => {
     }, []);
 
   return <>
-    <div className="col-8">
-    <Editor ref={editor}/>
-    </div>
-    <div className="col">
-      <div className="row bg-white">
-        <ValidatorController onValidate={validate} />
-      </div>
-      <div className="row" style={{height: '70vh', overflow: 'scroll'}}>
-        <ValidatorResults results={spectralResult}/>
-      </div>
-    </div>
+    <Row className="no-gutters">
+      <Col md="7">
+        <Editor ref={editor}/>
+      </Col>
+      <Col md="5">
+        <Row className="bg-white">
+          <Col md="12" className="bg-white" style={{padding: '10px'}}>
+            <ValidatorController onValidate={validate} />
+          </Col>
+        </Row>
+        <Row style={{height: 'calc(100vh - 200px)', overflow: 'scroll'}}>
+          <Col md="12" className="bg-white">
+            <ValidatorResults results={spectralResult}/>
+          </Col>
+        </Row>
+      </Col>
+    </Row>
     </>
 }
