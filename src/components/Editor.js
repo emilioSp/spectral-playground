@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import axios from 'axios';
 import * as monaco from 'monaco-editor';
 import './Editor.css';
+import debounce from 'lodash.debounce';
 
 
 export const Editor = React.forwardRef((props, editorRef) => {
@@ -16,11 +17,12 @@ export const Editor = React.forwardRef((props, editorRef) => {
         glyphMargin: true,
         theme: 'vs-dark'
       });
+      editorRef.current.onDidChangeModelContent(debounce(e => props.onChange(), 1000));
     }
     initMonaco();
   }, [])
 
   return <>
-    <div ref={editorEl} style={{ height: 'calc(100vh - 27px)', overflow: 'auto', marginRight: '6px' }}></div>
+    <div ref={editorEl} style={{ height: 'calc(100vh - 56px)', overflow: 'auto', marginRight: '6px' }}></div>
   </>;
 });

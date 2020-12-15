@@ -9,35 +9,47 @@ import { Row, Col } from 'design-react-kit';
 
 export const ValidatorContainer = () => {
   const [spectralResult, setSpectralResult] = useState(null);
+  const [isValidating, setIsValidating] = useState(false);
   const editor = React.createRef = {};
+  const decoration = React.createRef = [];
+  decoration.current = [];
 
   const validate = useCallback(
     async () => {
       console.log('validating');
+      setIsValidating(true);
+      editor.current.deltaDecorations(decoration.current, []);
+      setSpectralResult(null);
       const yaml = editor.current.getModel().getValue();
-      const myOpenApiDocument = new Document(yaml, Parsers.Yaml);
+      const document = new Document(yaml, Parsers.Yaml);
       const spectral = await getSpectral();
-      const results = await spectral.run(myOpenApiDocument);
-      const sev1 = results.filter(r => r.severity === 1);
-      for (const sev of sev1) {
-        editor.current.deltaDecorations([], [
-          {
-            range: new monaco.Range(sev.range.start.line,1,sev.range.end.line,1),
-            options: {
-              isWholeLine: true,
-              className: 'myContentClass',
-              glyphMarginClassName: 'myGlyphMarginClass'
-            }
+      const results = await spectral.run(document);
+      const newDecorations = [];
+      for (const result of results) {
+        newDecorations.push({
+          range: new monaco.Range(result.range.start.line,1, result.range.end.line,1),
+          options: {
+            isWholeLine: true,
+            className: 'myContentClass',
+            glyphMarginClassName: 'myGlyphMarginClass'
           }
-        ]);
+        });
       }
+      decoration.current = editor.current.deltaDecorations([], newDecorations);
       setSpectralResult(results);
+      setIsValidating(false);
     }, []);
+
+  const revealLine = useCallback(({ line, character }) => {
+    editor.current.revealLineInCenter(line);
+    editor.current.setPosition({ lineNumber: line, column: character });
+    editor.current.focus();
+  }, []);
 
   return <>
     <Row className="no-gutters">
       <Col md="7">
-        <Editor ref={editor}/>
+        <Editor ref={editor} onChange={validate}/>
       </Col>
       <Col md="5">
         <Row className="bg-white">
@@ -45,9 +57,9 @@ export const ValidatorContainer = () => {
             <ValidatorController onValidate={validate} />
           </Col>
         </Row>
-        <Row style={{height: 'calc(100vh - 95px)', overflow: 'scroll'}}>
+        <Row style={{height: 'calc(100vh - 124px)', overflow: 'scroll'}}>
           <Col md="12" className="bg-white">
-            <ValidatorResults results={spectralResult}/>
+            <ValidatorResults isValidating={isValidating} results={spectralResult} onResultClick={revealLine}/>
           </Col>
         </Row>
       </Col>
