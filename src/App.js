@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import 'bootstrap-italia/dist/css/bootstrap-italia.min.css';
 import 'typeface-titillium-web';
@@ -17,16 +17,19 @@ const App = () => {
     </nav>
     <Container fluid="true">
       <Row className="bg-primary">
-        <nav className="col-md-2 d-none d-md-block bg-white">
-          <Menu />
-        </nav>
-        <Col md="10" className="text-white">
-          <Row>
-            <Col md="12">
-              <ValidatorContainer />
-            </Col>
-          </Row>
+        <Col md="12">
+          <ValidatorContainer />
         </Col>
+        {/*<nav className="col-md-2 d-none d-md-block bg-white">*/}
+        {/*  <Menu />*/}
+        {/*</nav>*/}
+        {/*<Col md="10" className="text-white">*/}
+        {/*  <Row>*/}
+        {/*    <Col md="12">*/}
+        {/*      <ValidatorContainer />*/}
+        {/*    </Col>*/}
+        {/*  </Row>*/}
+        {/*</Col>*/}
       </Row>
     </Container>
     </>
