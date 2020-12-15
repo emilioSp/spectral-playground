@@ -1,12 +1,20 @@
 import React, { useRef, useEffect } from 'react';
 import axios from 'axios';
 import * as monaco from 'monaco-editor';
-import './Editor.css';
 import debounce from 'lodash.debounce';
+import { createUseStyles } from "react-jss";
 
+const useStyles = createUseStyles({
+  editor: {
+    height: 'calc(100vh - 56px)',
+    overflow: 'auto',
+    marginRight: '6px'
+  }
+});
 
 export const Editor = React.forwardRef((props, editorRef) => {
   const editorEl = useRef(null);
+  const classes = useStyles();
 
   useEffect(() => {
     const initMonaco = async () => {
@@ -23,6 +31,6 @@ export const Editor = React.forwardRef((props, editorRef) => {
   }, [])
 
   return <>
-    <div ref={editorEl} style={{ height: 'calc(100vh - 56px)', overflow: 'auto', marginRight: '6px' }}></div>
+    <div ref={editorEl} className={classes.editor}></div>
   </>;
 });

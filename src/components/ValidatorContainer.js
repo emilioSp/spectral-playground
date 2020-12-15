@@ -6,6 +6,23 @@ import * as monaco from 'monaco-editor';
 import { ValidatorController } from './ValidatorController.js';
 import { ValidatorResults } from './ValidatorResults.js';
 import { Row, Col } from 'design-react-kit';
+import { createUseStyles } from 'react-jss';
+
+const useStyles = createUseStyles({
+  validatorControllerContainer: {
+    padding: '10px'
+  },
+  validatorResultsContainer: {
+    height: 'calc(100vh - 124px)',
+    overflow: 'scroll'
+  },
+  editorMarginHighlightSev1: {
+    background: '#DB0026'
+  },
+  editorHighlightLine: {
+    background: '#0066CC'
+  }
+})
 
 export const ValidatorContainer = () => {
   const [spectralResult, setSpectralResult] = useState(null);
@@ -13,6 +30,7 @@ export const ValidatorContainer = () => {
   const editor = React.createRef = {};
   const decoration = React.createRef = [];
   decoration.current = [];
+  const classes = useStyles();
 
   const validate = useCallback(
     async () => {
@@ -30,8 +48,8 @@ export const ValidatorContainer = () => {
           range: new monaco.Range(result.range.start.line,1, result.range.end.line,1),
           options: {
             isWholeLine: true,
-            className: 'myContentClass',
-            glyphMarginClassName: 'myGlyphMarginClass'
+            className: classes.editorHighlightLine,
+            glyphMarginClassName: classes.editorMarginHighlightSev1
           }
         });
       }
@@ -53,11 +71,11 @@ export const ValidatorContainer = () => {
       </Col>
       <Col md="5">
         <Row className="bg-white">
-          <Col md="12" className="bg-white" style={{padding: '10px'}}>
+          <Col md="12" className={`bg-white ${classes.validatorControllerContainer}`}>
             <ValidatorController onValidate={validate} />
           </Col>
         </Row>
-        <Row style={{height: 'calc(100vh - 124px)', overflow: 'scroll'}}>
+        <Row className={classes.validatorResultsContainer}>
           <Col md="12" className="bg-white">
             <ValidatorResults isValidating={isValidating} results={spectralResult} onResultClick={revealLine}/>
           </Col>
