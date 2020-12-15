@@ -14,6 +14,7 @@ const useStyle = createUseStyles({
   }
 });
 
+// TODO: refactor this
 export const ValidatorResults = props => {
   if (props.isValidating) return 'Validation in progress...';
   if (!props.results) return null;
