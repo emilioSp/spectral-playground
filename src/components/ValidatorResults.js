@@ -26,14 +26,13 @@ export const ValidatorResults = props => {
 
   return <>
       <h4 className={classes.center}>
-        <span>Trovati </span>
-      <Badge
-        color="danger"
-        pill={false}
-        tag="span"
-      >
-        {errors.length} errori
-      </Badge> <span> e </span>
+        <Badge
+          color="danger"
+          pill={false}
+          tag="span"
+        >
+          {errors.length} errori
+        </Badge>
         <Badge
           color="warning"
           pill={false}
@@ -41,27 +40,27 @@ export const ValidatorResults = props => {
         >
           {warnings.length} warnings
         </Badge>
-    </h4>
-  <div className="table-responsive-md">
-    <table className="table align-content-center">
-      <thead>
-      <tr>
-        <th>Type</th>
-        <th>Line</th>
-        <th>Message</th>
-      </tr>
-      </thead>
-      <tbody>
-      {
-        props.results.map(r =>
-      <tr className={classes.cursorPointer} key={r.fingerprint} onClick={() => props.onResultClick({ line: r.range.start.line, character: r.range.start.character })}>
-        <td className={classes.center}>{r.severity}</td>
-        <td className={classes.center}>{r.range.start.line}</td>
-        <td className={classes.breakWords}>{r.message}</td>
-      </tr>)
-      }
-      </tbody>
-    </table>
-  </div>
+      </h4>
+      <div className="table-responsive-md">
+        <table className="table align-content-center">
+          <thead>
+          <tr>
+            <th>Type</th>
+            <th>Line</th>
+            <th>Message</th>
+          </tr>
+          </thead>
+          <tbody>
+          {
+            props.results.map(r =>
+          <tr className={classes.cursorPointer} key={r.fingerprint} onClick={() => props.onResultClick({ line: r.range.start.line, character: r.range.start.character })}>
+            <td className={classes.center}>{r.severity}</td>
+            <td className={classes.center}>{r.range.start.line}</td>
+            <td className={classes.breakWords}>{r.message}</td>
+          </tr>)
+          }
+          </tbody>
+        </table>
+      </div>
     </>
 }
