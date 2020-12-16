@@ -58,8 +58,6 @@ export const Main = () => {
     editor.current.focus();
   }, []);
 
-  // <Row className={classes.validatorResultsContainer}>
-
   return <main>
           <Container fluid={true}>
             <Row noGutters>
