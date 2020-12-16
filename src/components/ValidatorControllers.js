@@ -8,7 +8,7 @@ const useStyles = createUseStyles({
   }
 });
 
-export const ValidatorController = props => {
+export const ValidatorControllers = props => {
   const classes = useStyles();
 
   // TODO: refactor this

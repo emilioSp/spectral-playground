@@ -3,7 +3,7 @@ import { Editor } from './Editor.js';
 import { Document, Parsers } from '@stoplight/spectral';
 import { getSpectral } from '../spectral.js';
 import * as monaco from 'monaco-editor';
-import { ValidatorController } from './ValidatorController.js';
+import { ValidatorControllers } from './ValidatorControllers.js';
 import { ValidatorResults } from './ValidatorResults.js';
 import { Row, Col, Container } from 'design-react-kit';
 import { createUseStyles } from 'react-jss';
@@ -67,7 +67,7 @@ export const Main = () => {
                 <Editor ref={editor} onChange={validate}/>
               </Col>
               <Col md="5">
-                <ValidatorController onValidate={validate} isValidating={isValidating}/>
+                <ValidatorControllers onValidate={validate} isValidating={isValidating}/>
                 <ValidatorSummary results={spectralResult} />
                 <ValidatorResults isValidating={isValidating} results={spectralResult} onResultClick={revealLine}/>
               </Col>
