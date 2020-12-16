@@ -7,14 +7,17 @@ export const ValidatorSummary = props => {
   const errors = props.results.filter(r => r.severity === 1);
   const warnings = props.results.filter(r => r.severity !== 1);
 
-  return <h4 className="text-center">
+  return <div className="d-flex m-3">
+    <h4 className="pr-3">
       <Badge
         color="danger"
         pill={false}
         tag="span"
       >
-        {errors.length} errori
+        {errors.length} errors
       </Badge>
+    </h4>
+    <h4>
       <Badge
         color="warning"
         pill={false}
@@ -23,4 +26,5 @@ export const ValidatorSummary = props => {
         {warnings.length} warnings
       </Badge>
     </h4>
+  </div>
 }

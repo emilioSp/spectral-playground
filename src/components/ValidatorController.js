@@ -10,34 +10,53 @@ const useStyles = createUseStyles({
 
 export const ValidatorController = props => {
   const classes = useStyles();
-  return <>
-        <FormGroup
-          className="m-3"
-          tag="div"
+
+  if (props.isValidating) {
+    return <div className="d-flex align-items-center">
+      <FormGroup
+        className="m-3 flex-grow-1"
+        tag="div"
+      >
+        <Button
+          className="pt-2 pb-2 pl-3 pr-3 w-100"
+          color="primary"
+          icon
+          tag="button"
         >
-          <Button
-            className="pt-2 pb-2 pl-3 pr-3"
-            color="primary"
-            icon
-            tag="button"
-            onClick={ props.onValidate }
-          >
-            Validate
-            <Icon className={`ml-3 ${classes.validatorIconSize}`} color="white" icon="it-refresh"/>
-          </Button>
-        </FormGroup>
-        <FormGroup
-          check
-          className="m-3"
-          tag="div"
-        >
-          <div className="toggles">
-            <Label className="m-0 font-weight-light" check>
-              Auto-refresh
-              <Input type="checkbox" defaultChecked/>
-              <span className="lever" />
-            </Label>
-          </div>
-        </FormGroup>
-  </>
+          Please wait...
+          <Icon className={`ml-3 ${classes.validatorIconSize}`} color="white" icon="it-refresh"/>
+        </Button>
+      </FormGroup>
+    </div>
+  }
+  return <div className="d-flex align-items-center">
+    <FormGroup
+      className="m-3"
+      tag="div"
+    >
+      <Button
+        className="pt-2 pb-2 pl-3 pr-3"
+        color="primary"
+        icon
+        tag="button"
+        onClick={ props.onValidate }
+      >
+        Validate
+        <Icon className={`ml-3 ${classes.validatorIconSize}`} color="white" icon="it-refresh"/>
+      </Button>
+    </FormGroup>
+    <FormGroup
+      check
+      className="m-3"
+      tag="div"
+    >
+      <div className="toggles">
+        <Label className="m-0 font-weight-light" check>
+          Auto-refresh
+          <Input type="checkbox" defaultChecked/>
+          <span className="lever" />
+        </Label>
+      </div>
+    </FormGroup>
+  </div>
 }

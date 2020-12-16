@@ -15,10 +15,10 @@ const useStyles = createUseStyles({
     overflow: 'scroll'
   },
   editorMarginHighlightSev1: {
-    background: '#DB0026'
+    background: 'var(--danger)'
   },
   editorHighlightLine: {
-    background: '#0066CC'
+    background: 'var(--primary)'
   }
 })
 
@@ -69,8 +69,8 @@ export const ValidatorContainer = () => {
       </Col>
       <Col md="5">
         <Row className="bg-white">
-          <Col md="12" className="`bg-white d-flex align-items-center">
-            <ValidatorController onValidate={validate} />
+          <Col md="12">
+            <ValidatorController onValidate={validate} isValidating={isValidating}/>
           </Col>
         </Row>
         <Row>

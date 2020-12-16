@@ -8,8 +8,7 @@ const useStyle = createUseStyles({
 });
 
 export const ValidatorResults = props => {
-  if (props.isValidating) return 'Validation in progress...';
-  if (!props.results) return null;
+  if (props.isValidating || !props.results) return null;
 
   const classes = useStyle();
 
