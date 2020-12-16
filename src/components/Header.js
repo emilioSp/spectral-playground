@@ -12,9 +12,10 @@ const useStyles = createUseStyles({
 export const Header = () => {
   const classes = useStyles();
   return <header>
-    <Navbar tag='nav' className="bg-primary text-white justify-content-start p-2 px-4">
-      <img className="p-2" src='it.svg' alt='it logo' />
-      <img className="p-2" src='loghetto.svg' alt='checker logo' />
+    <Navbar tag='nav' className="bg-primary text-white justify-content-start py-3 px-4">
+      <Icon role='button' color="white" className="mx-4" icon="it-burger" size="lg" />
+      <img className="mx-2" src='it.svg' alt='it logo' />
+      <img className="mx-2" src='loghetto.svg' alt='checker logo' />
       <h5 className="m-0">Italian OpenAPI Validation Checker</h5>
       <Badge
         className={`mr-1 m-2 ${classes.version}`}
