@@ -25,6 +25,13 @@ export const Editor = React.forwardRef((props, editorRef) => {
         theme: 'vs-dark'
       });
       editorRef.current.onDidChangeModelContent(debounce(e => props.onChange(), 1000));
+      editorRef.current.changeViewZones(accessor => {
+        accessor.addZone({
+          afterLineNumber: 0,
+          heightInPx: 20,
+          domNode: document.createElement('span'),
+        });
+      });
     }
     initMonaco();
   }, [])
