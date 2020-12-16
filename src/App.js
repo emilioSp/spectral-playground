@@ -12,9 +12,7 @@ import { Container, Row, Col } from 'design-react-kit';
 
 const App = () => {
   return <>
-    <nav className="navbar bg-primary text-white flex-md-nowrap p-0">
-      <Header />
-    </nav>
+    <Header />
     <Container fluid="true">
       <Row className="bg-primary">
         <Col md="12">
