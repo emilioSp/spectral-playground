@@ -4,6 +4,10 @@ import { createUseStyles } from 'react-jss';
 const useStyle = createUseStyles({
   breakWords: {
     wordBreak: 'break-all'
+  },
+  enableScrollResults: {
+    height: 'calc(100vh - 239px)',
+    overflow: 'scroll'
   }
 });
 
@@ -12,7 +16,7 @@ export const ValidatorResults = props => {
 
   const classes = useStyle();
 
-  return <div className="table-responsive-md">
+  return <div className={`table-responsive-md ${classes.enableScrollResults}`}>
         <table className="table align-content-center">
           <thead>
           <tr>

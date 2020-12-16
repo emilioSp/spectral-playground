@@ -10,10 +10,6 @@ import { createUseStyles } from 'react-jss';
 import { ValidatorSummary } from './ValidatorSummary.js';
 
 const useStyles = createUseStyles({
-  validatorResultsContainer: {
-    height: 'calc(100vh - 124px)',
-    overflow: 'scroll'
-  },
   editorMarginHighlightSev1: {
     background: 'var(--danger)'
   },
@@ -62,6 +58,8 @@ export const Main = () => {
     editor.current.focus();
   }, []);
 
+  // <Row className={classes.validatorResultsContainer}>
+
   return <main>
           <Container fluid="true">
             <Row noGutters>
@@ -69,21 +67,9 @@ export const Main = () => {
                 <Editor ref={editor} onChange={validate}/>
               </Col>
               <Col md="5">
-                <Row className="bg-white">
-                  <Col md="12">
-                    <ValidatorController onValidate={validate} isValidating={isValidating}/>
-                  </Col>
-                </Row>
-                <Row>
-                  <Col md="12">
-                    <ValidatorSummary results={spectralResult} />
-                  </Col>
-                </Row>
-                <Row className={classes.validatorResultsContainer}>
-                  <Col md="12" className="bg-white">
-                    <ValidatorResults isValidating={isValidating} results={spectralResult} onResultClick={revealLine}/>
-                  </Col>
-                </Row>
+                <ValidatorController onValidate={validate} isValidating={isValidating}/>
+                <ValidatorSummary results={spectralResult} />
+                <ValidatorResults isValidating={isValidating} results={spectralResult} onResultClick={revealLine}/>
               </Col>
             </Row>
           </Container>

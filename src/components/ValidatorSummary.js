@@ -7,7 +7,7 @@ export const ValidatorSummary = props => {
   const errors = props.results.filter(r => r.severity === 1);
   const warnings = props.results.filter(r => r.severity !== 1);
 
-  return <div className="d-flex m-3">
+  return <div className="d-flex p-3 bg-primary">
     <h4 className="pr-3">
       <Badge
         color="danger"

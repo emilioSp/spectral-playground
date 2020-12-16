@@ -6,9 +6,8 @@ import { createUseStyles } from "react-jss";
 
 const useStyles = createUseStyles({
   editor: {
-    height: 'calc(100vh - 56px)',
+    height: 'calc(100vh - 80px)',
     overflow: 'auto',
-    marginRight: '6px'
   }
 });
 
