@@ -22,7 +22,8 @@ export const Editor = React.forwardRef((props, editorRef) => {
         value: [yaml].join('\n'),
         language: 'yaml',
         glyphMargin: true,
-        theme: 'vs-dark'
+        theme: 'vs-dark',
+        automaticLayout: true
       });
       editorRef.current.onDidChangeModelContent(debounce(e => props.onChange(), 1000));
       editorRef.current.changeViewZones(accessor => {
