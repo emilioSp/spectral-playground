@@ -6,9 +6,6 @@ const useStyles = createUseStyles({
   version: {
     backgroundColor: '#fff',
     color: '#06c'
-  },
-  invert: {
-    filter: 'invert(100)'
   }
 });
 
@@ -29,6 +26,6 @@ export const Header = () => {
       Beta 0.2
     </Badge>
     <h6 className="m-0 ml-auto">Info + Repo</h6>
-    <Icon className={`p-2 ${classes.invert}`} icon="it-github" size="lg" />
+    <Icon color="white" className="p-2" icon="it-github" size="lg" />
   </nav>
 }

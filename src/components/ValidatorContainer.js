@@ -7,11 +7,9 @@ import { ValidatorController } from './ValidatorController.js';
 import { ValidatorResults } from './ValidatorResults.js';
 import { Row, Col } from 'design-react-kit';
 import { createUseStyles } from 'react-jss';
+import { ValidatorSummary } from './ValidatorSummary.js';
 
 const useStyles = createUseStyles({
-  validatorControllerContainer: {
-    padding: '10px'
-  },
   validatorResultsContainer: {
     height: 'calc(100vh - 124px)',
     overflow: 'scroll'
@@ -71,8 +69,13 @@ export const ValidatorContainer = () => {
       </Col>
       <Col md="5">
         <Row className="bg-white">
-          <Col md="12" className={`bg-white ${classes.validatorControllerContainer}`}>
+          <Col md="12" className="`bg-white d-flex align-items-center">
             <ValidatorController onValidate={validate} />
+          </Col>
+        </Row>
+        <Row>
+          <Col md="12">
+            <ValidatorSummary results={spectralResult} />
           </Col>
         </Row>
         <Row className={classes.validatorResultsContainer}>
