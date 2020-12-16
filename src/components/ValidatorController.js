@@ -34,7 +34,7 @@ export const ValidatorController = props => {
           <div className="toggles">
             <Label className="m-0 font-weight-light" check>
               Auto-refresh
-              <Input type="checkbox" />
+              <Input type="checkbox" defaultChecked/>
               <span className="lever" />
             </Label>
           </div>
