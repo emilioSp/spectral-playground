@@ -61,11 +61,11 @@ export const Main = () => {
   // <Row className={classes.validatorResultsContainer}>
 
   return <main>
-          <Container fluid="true">
+          <Container fluid={true}>
             <Row noGutters>
               <Col md="2">
                 <FormGroup
-                  className="m-3 flex-grow-1"
+                  className="m-4"
                   tag="div"
                 >
                   <Button
@@ -78,7 +78,7 @@ export const Main = () => {
                   </Button>
                 </FormGroup>
                 <FormGroup
-                  className="m-3 flex-grow-1"
+                  className="m-4"
                   tag="div"
                 >
                   <Button
@@ -91,7 +91,7 @@ export const Main = () => {
                   </Button>
                 </FormGroup>
                 <FormGroup
-                  className="m-3 flex-grow-1"
+                  className="m-4"
                   tag="div"
                 >
                   <Button

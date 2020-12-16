@@ -16,12 +16,12 @@ export const Header = () => {
   const classes = useStyles();
   return <header>
     <Container fluid={true}>
-        <Row className={`bg-primary text-white ${classes.headerHeight}`}>
+        <Row noGutters className={`bg-primary text-white ${classes.headerHeight}`}>
           <Col md="2" className="d-flex align-items-center bg-white">
             <Icon role='button' color="primary" className="mx-4" icon="it-burger" size="lg" />
           </Col>
           <Col md="10" className="d-flex justify-content-start align-items-center">
-            <img className="mx-2" src='it.svg' alt='it logo' />
+            <img className="ml-4 mr-2" src='it.svg' alt='it logo' />
             <img className="mx-2" src='loghetto.svg' alt='checker logo' />
             <h5 className="m-0">Italian OpenAPI Validation Checker</h5>
             <Badge
