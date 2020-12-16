@@ -5,7 +5,7 @@ import { getSpectral } from '../spectral.js';
 import * as monaco from 'monaco-editor';
 import { ValidatorControllers } from './ValidatorControllers.js';
 import { ValidatorResults } from './ValidatorResults.js';
-import { Row, Col, Container } from 'design-react-kit';
+import { Row, Col, Container, Button, Icon, FormGroup } from 'design-react-kit';
 import { createUseStyles } from 'react-jss';
 import { ValidatorSummary } from './ValidatorSummary.js';
 
@@ -63,10 +63,51 @@ export const Main = () => {
   return <main>
           <Container fluid="true">
             <Row noGutters>
-              <Col md="7">
+              <Col md="2">
+                <FormGroup
+                  className="m-3 flex-grow-1"
+                  tag="div"
+                >
+                  <Button
+                    className="py-2 px-3"
+                    color="primary"
+                    icon
+                    tag="button"
+                  >
+                    Upload file
+                  </Button>
+                </FormGroup>
+                <FormGroup
+                  className="m-3 flex-grow-1"
+                  tag="div"
+                >
+                  <Button
+                    className="py-2 px-3"
+                    color="primary"
+                    icon
+                    tag="button"
+                  >
+                    From url
+                  </Button>
+                </FormGroup>
+                <FormGroup
+                  className="m-3 flex-grow-1"
+                  tag="div"
+                >
+                  <Button
+                    className="py-2 px-3"
+                    color="primary"
+                    icon
+                    tag="button"
+                  >
+                    Template
+                  </Button>
+                </FormGroup>
+              </Col>
+              <Col md="6">
                 <Editor ref={editor} onChange={validate}/>
               </Col>
-              <Col md="5">
+              <Col md="4">
                 <ValidatorControllers onValidate={validate} isValidating={isValidating}/>
                 <ValidatorSummary results={spectralResult} />
                 <ValidatorResults isValidating={isValidating} results={spectralResult} onResultClick={revealLine}/>
