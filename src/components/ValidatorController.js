@@ -11,6 +11,7 @@ const useStyles = createUseStyles({
 export const ValidatorController = props => {
   const classes = useStyles();
 
+  // TODO: refactor this
   if (props.isValidating) {
     return <div className="d-flex align-items-center">
       <FormGroup
