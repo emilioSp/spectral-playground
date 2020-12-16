@@ -15,7 +15,7 @@ const useStyles = createUseStyles({
 export const Header = () => {
   const classes = useStyles();
   return <header>
-    <Container fluid={true}>
+    <Container fluid={true} className="p-0">
         <Row noGutters className={`bg-primary text-white ${classes.headerHeight}`}>
           <Col md="2" className="d-flex align-items-center bg-white">
             <Icon role='button' color="primary" className="mx-4" icon="it-burger" size="lg" />

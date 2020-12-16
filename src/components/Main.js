@@ -59,7 +59,7 @@ export const Main = () => {
   }, []);
 
   return <main>
-          <Container fluid={true}>
+          <Container fluid={true} className="p-0">
             <Row noGutters>
               <Col md="2">
                 <FormGroup
