@@ -5,31 +5,12 @@ import 'typeface-titillium-web';
 import 'typeface-roboto-mono';
 import 'typeface-lora';
 import { Header } from './components/Header.js';
-import { Menu } from './components/Menu.js';
-import { ValidatorContainer } from './components/ValidatorContainer.js';
-import { Container, Row, Col } from 'design-react-kit';
-
+import { Main } from './components/Main.js';
 
 const App = () => {
   return <>
     <Header />
-    <Container fluid="true">
-      <Row className="bg-primary">
-        <Col md="12">
-          <ValidatorContainer />
-        </Col>
-        {/*<nav className="col-md-2 d-none d-md-block bg-white">*/}
-        {/*  <Menu />*/}
-        {/*</nav>*/}
-        {/*<Col md="10" className="text-white">*/}
-        {/*  <Row>*/}
-        {/*    <Col md="12">*/}
-        {/*      <ValidatorContainer />*/}
-        {/*    </Col>*/}
-        {/*  </Row>*/}
-        {/*</Col>*/}
-      </Row>
-    </Container>
+    <Main />
     </>
 }
 

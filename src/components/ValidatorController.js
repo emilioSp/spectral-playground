@@ -18,7 +18,7 @@ export const ValidatorController = props => {
         tag="div"
       >
         <Button
-          className="pt-2 pb-2 pl-3 pr-3 w-100"
+          className="py-2 px-3 w-100"
           color="primary"
           icon
           tag="button"
@@ -35,7 +35,7 @@ export const ValidatorController = props => {
       tag="div"
     >
       <Button
-        className="pt-2 pb-2 pl-3 pr-3"
+        className="py-2 px-3"
         color="primary"
         icon
         tag="button"

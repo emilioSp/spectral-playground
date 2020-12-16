@@ -5,7 +5,7 @@ import { getSpectral } from '../spectral.js';
 import * as monaco from 'monaco-editor';
 import { ValidatorController } from './ValidatorController.js';
 import { ValidatorResults } from './ValidatorResults.js';
-import { Row, Col } from 'design-react-kit';
+import { Row, Col, Container } from 'design-react-kit';
 import { createUseStyles } from 'react-jss';
 import { ValidatorSummary } from './ValidatorSummary.js';
 
@@ -22,7 +22,7 @@ const useStyles = createUseStyles({
   }
 })
 
-export const ValidatorContainer = () => {
+export const Main = () => {
   const [spectralResult, setSpectralResult] = useState(null);
   const [isValidating, setIsValidating] = useState(false);
   const editor = React.createRef = {};
@@ -62,28 +62,30 @@ export const ValidatorContainer = () => {
     editor.current.focus();
   }, []);
 
-  return <>
-    <Row className="no-gutters">
-      <Col md="7">
-        <Editor ref={editor} onChange={validate}/>
-      </Col>
-      <Col md="5">
-        <Row className="bg-white">
-          <Col md="12">
-            <ValidatorController onValidate={validate} isValidating={isValidating}/>
-          </Col>
-        </Row>
-        <Row>
-          <Col md="12">
-            <ValidatorSummary results={spectralResult} />
-          </Col>
-        </Row>
-        <Row className={classes.validatorResultsContainer}>
-          <Col md="12" className="bg-white">
-            <ValidatorResults isValidating={isValidating} results={spectralResult} onResultClick={revealLine}/>
-          </Col>
-        </Row>
-      </Col>
-    </Row>
-    </>
+  return <main>
+          <Container fluid="true">
+            <Row noGutters>
+              <Col md="7">
+                <Editor ref={editor} onChange={validate}/>
+              </Col>
+              <Col md="5">
+                <Row className="bg-white">
+                  <Col md="12">
+                    <ValidatorController onValidate={validate} isValidating={isValidating}/>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col md="12">
+                    <ValidatorSummary results={spectralResult} />
+                  </Col>
+                </Row>
+                <Row className={classes.validatorResultsContainer}>
+                  <Col md="12" className="bg-white">
+                    <ValidatorResults isValidating={isValidating} results={spectralResult} onResultClick={revealLine}/>
+                  </Col>
+                </Row>
+              </Col>
+            </Row>
+          </Container>
+        </main>
 }
