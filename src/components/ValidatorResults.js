@@ -16,7 +16,7 @@ export const ValidatorResults = props => {
 
   const classes = useStyle();
 
-  return <><div className="row">
+  return <><div className="row py-3">
     <div className="col-sm-2 text-center">
       Type
     </div>
@@ -29,7 +29,7 @@ export const ValidatorResults = props => {
   </div>
     <div className={classes.enableScrollResults}>
       {props.results.map(r =>
-        <div className="row" role="button" key={r.fingerprint} onClick={() => props.onResultClick({ line: r.range.start.line, character: r.range.start.character })}>
+        <div className="row py-3" role="button" key={r.fingerprint} onClick={() => props.onResultClick({ line: r.range.start.line, character: r.range.start.character })}>
           <div className="col-sm-2 text-center">{r.severity}</div>
           <div className="col-sm-2 text-center">{r.range.start.line}</div>
           <div className={`col-sm-8 ${classes.breakWords}`}>{r.message}</div>
