@@ -9,8 +9,11 @@ import { Main } from './components/Main.js';
 
 const App = () => {
   const [isExtended, setExtendedMode] = useState(false);
+  const toogleMenu = () => {
+    setExtendedMode(!isExtended);
+  }
   return <>
-    <Header isExtended={isExtended} />
+    <Header isExtended={isExtended} onMenuControllerClick={toogleMenu} />
     <Main isExtended={isExtended} />
     </>
 }

@@ -5,7 +5,6 @@ import { getSpectral } from '../spectral.js';
 import * as monaco from 'monaco-editor';
 import { ValidatorControllers } from './ValidatorControllers.js';
 import { ValidatorResults } from './ValidatorResults.js';
-import { Row, Col, Container, Button, Icon, FormGroup } from 'design-react-kit';
 import { createUseStyles } from 'react-jss';
 import { ValidatorSummary } from './ValidatorSummary.js';
 import { Menu } from './Menu.js';
@@ -62,6 +61,7 @@ export const Main = (props) => {
 
   const sideSection = classNames({
     'col-md-2': !props.isExtended,
+    'd-none': props.isExtended,
   })
 
   const mainSection = classNames({
@@ -70,20 +70,20 @@ export const Main = (props) => {
   })
 
   return <main>
-          <Container fluid={true} className="p-0">
-            <Row noGutters>
-              <Col className={sideSection}>
+          <div className="container-fluid p-0">
+            <div className="row no-gutters">
+              <div className={sideSection}>
                 <Menu />
-              </Col>
-              <Col className={mainSection}>
+              </div>
+              <div className={mainSection}>
                 <Editor ref={editor} onChange={validate}/>
-              </Col>
-              <Col className="col-md-4">
+              </div>
+              <div className="col-md-4">
                 <ValidatorControllers onValidate={validate} isValidating={isValidating}/>
                 <ValidatorSummary results={spectralResult} />
                 <ValidatorResults isValidating={isValidating} results={spectralResult} onResultClick={revealLine}/>
-              </Col>
-            </Row>
-          </Container>
+              </div>
+            </div>
+          </div>
         </main>
 }
