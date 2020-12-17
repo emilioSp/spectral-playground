@@ -32,7 +32,7 @@ export const Header = props => {
   }, 'ml-4', classes.icon);
 
   return <header>
-    <div className="container-fluid p-0">
+    <div className="container-fluid p-0 user-select-none">
         <div className={`row no-gutters bg-primary text-white`}>
           <div className={leftSection}>
             <Icon onClick={props.onMenuControllerClick} role='button' className={iconClassNames} icon="it-burger"/>
