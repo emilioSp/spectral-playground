@@ -17,7 +17,7 @@ export const Editor = React.forwardRef((props, editorRef) => {
 
   useEffect(() => {
     const initMonaco = async () => {
-      const { data: yaml} = await axios.get('performance.yaml');
+      const { data: yaml} = await axios.get('example.yaml');
       editorRef.current = monaco.editor.create(editorEl.current, {
         value: [yaml].join('\n'),
         language: 'yaml',
