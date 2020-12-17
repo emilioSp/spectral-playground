@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import 'bootstrap-italia/dist/css/bootstrap-italia.min.css';
 import 'typeface-titillium-web';
@@ -8,9 +8,10 @@ import { Header } from './components/Header.js';
 import { Main } from './components/Main.js';
 
 const App = () => {
+  const [isExtended, setExtendedMode] = useState(false);
   return <>
-    <Header />
-    <Main />
+    <Header isExtended={isExtended} />
+    <Main isExtended={isExtended} />
     </>
 }
 

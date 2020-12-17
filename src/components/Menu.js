@@ -1,51 +1,44 @@
 import React from 'react';
-import { Button } from 'design-react-kit';
+import { Button, FormGroup } from 'design-react-kit';
 
 export const Menu = () => <>
-    <div className="row p-3">
-      <div className="col">
-        Botton menu
-      </div>
-    </div>
-    <div className="row p-3">
-      <div className="col">
-        <Button
-          color="primary"
-          icon={false}
-          outline
-          tag="button"
-        >
-          Upload
-        </Button>
-      </div>
-    </div>
-    <div className="row p-3">
-      <div className="col">
-        <Button
-          color="primary"
-          icon={false}
-          outline
-          tag="button"
-        >
-          Template
-        </Button>
-      </div>
-    </div>
-    <div className="row p-3">
-      <div className="col">
-        <Button
-          color="primary"
-          icon={false}
-          outline
-          tag="button"
-        >
-          From url
-        </Button>
-      </div>
-    </div>
-    <div className="row p-3">
-      <div className="col">
-        <a>settings</a>
-      </div>
-    </div>
+  <FormGroup
+    className="m-4"
+    tag="div"
+  >
+    <Button
+      className="py-2 px-3"
+      color="primary"
+      icon
+      tag="button"
+    >
+      Upload file
+    </Button>
+  </FormGroup>
+  <FormGroup
+    className="m-4"
+    tag="div"
+  >
+    <Button
+      className="py-2 px-3"
+      color="primary"
+      icon
+      tag="button"
+    >
+      From url
+    </Button>
+  </FormGroup>
+  <FormGroup
+    className="m-4"
+    tag="div"
+  >
+    <Button
+      className="py-2 px-3"
+      color="primary"
+      icon
+      tag="button"
+    >
+      Template
+    </Button>
+  </FormGroup>
 </>

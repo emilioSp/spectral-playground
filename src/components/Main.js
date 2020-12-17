@@ -8,6 +8,8 @@ import { ValidatorResults } from './ValidatorResults.js';
 import { Row, Col, Container, Button, Icon, FormGroup } from 'design-react-kit';
 import { createUseStyles } from 'react-jss';
 import { ValidatorSummary } from './ValidatorSummary.js';
+import { Menu } from './Menu.js';
+import classNames from 'classnames';
 
 const useStyles = createUseStyles({
   editorMarginHighlightSev1: {
@@ -18,7 +20,7 @@ const useStyles = createUseStyles({
   }
 })
 
-export const Main = () => {
+export const Main = (props) => {
   const [spectralResult, setSpectralResult] = useState(null);
   const [isValidating, setIsValidating] = useState(false);
   const editor = React.createRef = {};
@@ -58,54 +60,25 @@ export const Main = () => {
     editor.current.focus();
   }, []);
 
+  const sideSection = classNames({
+    'col-md-2': !props.isExtended,
+  })
+
+  const mainSection = classNames({
+    'col-md-6': !props.isExtended,
+    'col-md-8': props.isExtended
+  })
+
   return <main>
           <Container fluid={true} className="p-0">
             <Row noGutters>
-              <Col md="2">
-                <FormGroup
-                  className="m-4"
-                  tag="div"
-                >
-                  <Button
-                    className="py-2 px-3"
-                    color="primary"
-                    icon
-                    tag="button"
-                  >
-                    Upload file
-                  </Button>
-                </FormGroup>
-                <FormGroup
-                  className="m-4"
-                  tag="div"
-                >
-                  <Button
-                    className="py-2 px-3"
-                    color="primary"
-                    icon
-                    tag="button"
-                  >
-                    From url
-                  </Button>
-                </FormGroup>
-                <FormGroup
-                  className="m-4"
-                  tag="div"
-                >
-                  <Button
-                    className="py-2 px-3"
-                    color="primary"
-                    icon
-                    tag="button"
-                  >
-                    Template
-                  </Button>
-                </FormGroup>
+              <Col className={sideSection}>
+                <Menu />
               </Col>
-              <Col md="6">
+              <Col className={mainSection}>
                 <Editor ref={editor} onChange={validate}/>
               </Col>
-              <Col md="4">
+              <Col className="col-md-4">
                 <ValidatorControllers onValidate={validate} isValidating={isValidating}/>
                 <ValidatorSummary results={spectralResult} />
                 <ValidatorResults isValidating={isValidating} results={spectralResult} onResultClick={revealLine}/>
