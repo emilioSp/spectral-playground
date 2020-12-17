@@ -29,7 +29,6 @@ export const Main = (props) => {
 
   const validate = useCallback(
     async () => {
-      console.log('validating');
       setIsValidating(true);
       editor.current.deltaDecorations(decoration.current, []);
       setSpectralResult(null);
